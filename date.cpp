@@ -72,11 +72,9 @@ bool date::setDate(string data)
     this->day=d;
     this->year=y;
     this->month=m;
-    cout<<"Date Correct";
     return true;
 }
     else{
-    cout<<"Date Incorrect";
     return false;
    }
     ///end
@@ -301,7 +299,8 @@ bool date::operator==(const date &d1)
 }
 unsigned short date::weekFinder()
 {
-    int yCode=0,mCode=0,delta=0,y=0;
+    int yCode=0,mCode=0,delta=0,y=0,last;
+    last=this->year%100;
     if(this->year%4==0)
         if(this->month<=2)
             delta=1;
@@ -339,6 +338,24 @@ unsigned short date::weekFinder()
         mCode=5;
         break;
     case 7:
-
+        mCode=0;
+        break;
+    case 8:
+        mCode=3;
+        break;
+    case 9:
+        mCode=6;
+        break;
+    case 10:
+        mCode=1;
+        break;
+    case 11:
+        mCode=4;
+        break;
+    case 12:
+        mCode=6;
+        break;
     }
+    yCode=(y+last+((last)/4))%7;
+    return ((delta+(this->day+mCode+yCode)%7)+6)%7;
 }

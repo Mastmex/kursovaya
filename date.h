@@ -29,5 +29,4 @@ public:
     unsigned int getYear(){return this->year;}
 };
 
-
 #endif // DATE_H
