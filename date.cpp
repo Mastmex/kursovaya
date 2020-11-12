@@ -245,51 +245,100 @@ void date::increaceDay()
 }
 void date::increaceDay(unsigned int d)
 {
-    for(int i=0;i<d;i++)
-    {
-    this->day++;
-    if(this->month==4||this->month==6||this->month==9||this->month==11)
-        if(this->day==31)
-        {
-            this->day=1;
-            this->month++;
-            continue;
-        }
-    if(this->month==1||this->month==3||this->month==5||this->month==7||this->month==8||this->month==10)
-    {
-        if(this->day==32)
-        {
-            this->day=1;
-            this->month++;
-            continue;
-        }
-    }
-    if(this->month==12)
-    {
-        if(this->day==32)
-        {
-            this->day=1;
-            this->month=1;
-            this->year++;
-            continue;
-        }
-    }
-    if((this->year)%4!=0)
-        if(this->month==2)
-            if(this->day==29)
-            {
-                this->day=1;
-                this->month++;
-                continue;
-            }
-    if((this->year)%4==0)
-        if(this->month==2)
-            if(this->day==30)
-            {
-                this->day=1;
-                this->month++;
-                continue;
-            }
-    }
+    for(unsigned int i=0;i<d;i++)
+        this->increaceDay();
     return;
+}
+void date::decreaceDay()
+{
+    this->day--;
+    if(day==0)
+    {
+        if(this->month==2||this->month==4||this->month==6||this->month==9||this->month==11)
+        {
+            this->day=30;
+            this->month--;
+            return;
+        }
+        if(this->month==5||this->month==7||this->month==8||this->month==10||this->month==12)
+        {
+            this->day=31;
+            this->month--;
+            return;
+        }
+        if(this->month==3)
+        {
+            if((this->year%4)!=0)
+            {
+                this->month--;
+                this->day=28;
+                return;
+            }
+            else
+            {
+                this->month--;
+                this->day=29;
+                return;
+            }
+        }
+        if(this->month==1)
+        {
+            this->month=12;
+            this->year--;
+            this->day=31;
+            return;
+        }
+    }
+}
+void date::decreaceDay(unsigned int d)
+{
+    for(unsigned int i =0;i<d;i++)
+        this->decreaceDay();
+}
+bool date::operator==(const date &d1)
+{
+    return (d1.day==this->day&&d1.year==this->year&&d1.month==this->month);
+}
+unsigned short date::weekFinder()
+{
+    int yCode=0,mCode=0,delta=0,y=0;
+    if(this->year%4==0)
+        if(this->month<=2)
+            delta=1;
+    switch ((this->year/100)%4) {
+    case 0:
+        y=6;
+        break;
+    case 1:
+        y=4;
+        break;
+    case 2:
+        y=2;
+        break;
+    case 3:
+        y=0;
+        break;
+    }
+    switch (this->month) {
+    case 1:
+        mCode=1;
+        break;
+    case 2:
+        mCode=4;
+        break;
+    case 3:
+        mCode=4;
+        break;
+    case 4:
+        mCode =0;
+        break;
+    case 5:
+        mCode=2;
+        break;
+    case 6:
+        mCode=5;
+        break;
+    case 7:
+
+    }
 }

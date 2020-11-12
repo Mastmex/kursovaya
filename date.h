@@ -21,6 +21,13 @@ public:
     void increaceDay();
     void increaceDay(unsigned int d);
     void decreaceDay();
+    void decreaceDay(unsigned int d);
+    unsigned short weekFinder();
+    bool operator==(const date &d1);
+    unsigned int getDay(){return this->day;}
+    unsigned int getMonth(){return this->month;}
+    unsigned int getYear(){return this->year;}
 };
+
 
 #endif // DATE_H
