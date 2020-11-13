@@ -23,6 +23,7 @@ public:
     void decreaceDay();
     void decreaceDay(unsigned int d);
     unsigned short weekFinder();
+    unsigned short weekFinder2();
     bool operator==(const date &d1);
     unsigned short getDay(){return this->day;}
     unsigned short getMonth(){return this->month;}

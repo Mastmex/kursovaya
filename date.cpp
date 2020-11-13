@@ -360,3 +360,39 @@ unsigned short date::weekFinder()
     yCode=(y+last+((last)/4))%7;
     return ((delta+(this->day+mCode+yCode)%7)+6)%7;
 }
+unsigned short date::weekFinder2()
+{
+    date d1,d2;
+    int i=0;
+    d1.setDate("21.11.2001");
+    d2.setDate(this->getDate());
+    if(d1==d2)
+        return 3;
+    if(d1.getYear()>d2.getYear())
+        goto less;
+    if(d1.getYear()==d2.getYear()&&d1.getMonth()>d2.getMonth())
+        goto less;
+    if(d1.getYear()==d2.getYear()&&d1.getMonth()==d2.getMonth()&&d1.getDay()>d2.getDay())
+        goto less;
+    goto more;
+    more:
+    while(1)
+    {
+        i++;
+        d1.increaceDay();
+        if(d1==d2)
+            return (3+i)%7;
+    }
+    less:
+    while(1)
+    {
+        i--;
+        d1.decreaceDay();
+        if(i==-1)
+            i=6;
+        if(d1==d2)
+            return (3+i)%7;
+    }
+
+}
+

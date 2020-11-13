@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -151,7 +152,7 @@ void MainWindow::on_pushButton_7_clicked()
 QString MainWindow::numToQString(date d)
 {
     string l;
-    switch (d.weekFinder()) {
+    switch (d.weekFinder2()) {
         case 0:
         l="Воскресенье";
         break;

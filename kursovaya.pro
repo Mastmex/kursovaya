@@ -26,6 +26,10 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
+win32 {
+        RC_FILE += file.rc
+        OTHER_FILES += file.rc
+}
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
