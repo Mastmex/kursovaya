@@ -3,6 +3,7 @@
 date::date()
 {
     this->zero=false;
+    this->setDate("21/11/2001");
 }
 bool date::setDate(string data)
 {
@@ -252,15 +253,15 @@ void date::decreaceDay()
     this->day--;
     if(day==0)
     {
-        if(this->month==2||this->month==4||this->month==6||this->month==9||this->month==11)
+        if(this->month==2||this->month==4||this->month==6||this->month==9||this->month==8||this->month==11)
         {
-            this->day=30;
+            this->day=31;
             this->month--;
             return;
         }
-        if(this->month==5||this->month==7||this->month==8||this->month==10||this->month==12)
+        if(this->month==5||this->month==7||this->month==10||this->month==12)
         {
-            this->day=31;
+            this->day=30;
             this->month--;
             return;
         }

@@ -9,7 +9,7 @@ class date
 private:
     unsigned short day;
     unsigned short month;
-    unsigned short year;
+    unsigned int year;
     bool zero=false;
     bool dataCheck(unsigned short d,unsigned short m,unsigned short y);
 public:
@@ -24,8 +24,8 @@ public:
     void decreaceDay(unsigned int d);
     unsigned short weekFinder();
     bool operator==(const date &d1);
-    unsigned int getDay(){return this->day;}
-    unsigned int getMonth(){return this->month;}
+    unsigned short getDay(){return this->day;}
+    unsigned short getMonth(){return this->month;}
     unsigned int getYear(){return this->year;}
 };
 

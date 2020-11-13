@@ -18,12 +18,13 @@ int MainWindow::between(date d1,date d2)
     int i=0;
     if(d1==d2)
         return 0;
-    if(d1.getYear()>=d2.getYear()){
-        if(d1.getMonth()>=d2.getMonth())
-            if(d1.getDay()>d2.getDay())
-                goto less;
-    }
-    else goto more;
+    if(d1.getYear()>d2.getYear())
+        goto less;
+    if(d1.getYear()==d2.getYear()&&d1.getMonth()>d2.getMonth())
+        goto less;
+    if(d1.getYear()==d2.getYear()&&d1.getMonth()==d2.getMonth()&&d1.getDay()>d2.getDay())
+        goto less;
+    goto more;
     more:
     while(1)
     {
@@ -64,8 +65,8 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::setData()
 {
     this->ui->label_8->setText(QString::fromStdString(this->d1.getDate()));
-    this->ui->label_9->setText(QString::fromStdString(this->d1.getDateAmerican()));
-    this->ui->label_10->setText(QString::fromStdString(this->d1.getDateLong()));
+    this->ui->label_10->setText(QString::fromStdString(this->d1.getDateAmerican()));
+    this->ui->label_9->setText(QString::fromStdString(this->d1.getDateLong()));
     this->ui->label_16->setText(numToQString(d1));
     this->ui->textEdit->clear();
 }
@@ -174,4 +175,36 @@ QString MainWindow::numToQString(date d)
     break;
     }
     return QString::fromStdString(l);
+}
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+    if(arg1==1)
+        this->ui->pushButton_2->setText("Убавить день");
+    else
+        this->ui->pushButton_2->setText("Убавить дни");
+}
+
+void MainWindow::on_spinBox_2_valueChanged(int arg1)
+{
+    if(arg1==1)
+        this->ui->pushButton_3->setText("Добавить день");
+    else
+        this->ui->pushButton_3->setText("Добавить дни");
+}
+
+void MainWindow::on_spinBox_3_valueChanged(int arg1)
+{
+    if(arg1==1)
+        this->ui->pushButton_4->setText("Убавить день");
+    else
+        this->ui->pushButton_4->setText("Убавить дни");
+}
+
+void MainWindow::on_spinBox_4_valueChanged(int arg1)
+{
+    if(arg1==1)
+        this->ui->pushButton_5->setText("Добавить день");
+    else
+        this->ui->pushButton_5->setText("Добавить дни");
 }
